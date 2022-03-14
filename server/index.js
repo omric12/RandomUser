@@ -12,6 +12,7 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 app.get('/users', (req, res) => {
+  console.log('get req ');
   axios
     .get('https://randomuser.me/api/?results=10')
     .then((response) => {
