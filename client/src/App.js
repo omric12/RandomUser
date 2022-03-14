@@ -101,32 +101,41 @@ function MyForm({ handleNewUser }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id='form'>
       <label>
-        Enter your first name:
+        Enter your first name:{' '}
         <input
+          id='input'
           type='text'
           value={first}
           onChange={(e) => setFirst(e.target.value)}
         />
       </label>
+      <br />
+      <br />
       <label>
-        Enter your last name:
+        Enter your last name:{' '}
         <input
+          id='input'
           type='text'
           value={last}
           onChange={(e) => setLast(e.target.value)}
         />
       </label>
+      <br />
+      <br />
       <label>
-        Enter your email:
+        Enter your email:{' '}
         <input
+          id='input'
           type='text'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
-      <input type='submit' />
+      <br />
+      <br />
+      <input id='submit' type='submit' />
     </form>
   );
 }
