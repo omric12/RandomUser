@@ -1,13 +1,25 @@
 const express = require('express');
+const axios = require('axios');
+const cors = require('cors');
+
 const app = express();
-const axios = require('axios').default;
+app.use(cors());
+
+/*
+ * process.env.PORT while hosted on Heroku
+ * 5000 while hosted locally
+ */
+const PORT = process.env.PORT || 5000;
 
 app.get('/users', (req, res) => {
   axios
     .get('https://randomuser.me/api/?results=10')
-    .then((item) => res.json(item.data.results));
+    .then((response) => {
+      res.send(response.data.results);
+    })
+    .catch((e) => console.log('ERROR BE: ', e));
 });
 
-app.listen(5000, () => {
-  console.log('listening on port 5000');
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
 });
