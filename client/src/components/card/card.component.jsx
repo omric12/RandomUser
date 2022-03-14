@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import Popup from '../popup/popup';
 
-function Card({ id, user, handleDelete, handleUpdate }) {
+function Card({ id, user, handleDelete, handleUpdate, onClick }) {
   const [isOpen, setIsOpen] = useState(false);
   const [first, setFirst] = useState();
   const [last, setLast] = useState();
@@ -38,7 +38,7 @@ function Card({ id, user, handleDelete, handleUpdate }) {
           <button className='optionBtn' onClick={handleDelete}>
             Delete
           </button>
-          <button className='optionBtn' onClick={togglePopup}>
+          <button className='optionBtn' o onClick={onClick}>
             Details
           </button>
         </div>
@@ -46,7 +46,7 @@ function Card({ id, user, handleDelete, handleUpdate }) {
           <Popup
             content={
               <>
-                <b>Manage account</b>
+                <b style={{ color: 'black' }}>Manage account</b>
                 <form onSubmit={handleSubmit}>
                   <label htmlFor='fname'>First name:</label>
                   <input
