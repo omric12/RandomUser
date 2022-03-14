@@ -26,7 +26,7 @@ function Card({ id, user, handleDelete, handleUpdate }) {
   if (user) {
     return (
       <div className='card-container'>
-        <img className='image' src={user.picture.large} alt='user' />
+        <img className='image' src={user.picture?.large} alt='Who Are You?' />
         <h2>
           {user.name.title}. {last} {first}
         </h2>

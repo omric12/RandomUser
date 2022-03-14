@@ -1,8 +1,9 @@
 // import logo from "./logo.svg";
 import './App.css';
 
+import { Component, useState } from 'react';
+
 import Card from './components/card/card.component.jsx';
-import { Component } from 'react';
 import { SearchBox } from './components/searchbox/searchbox.component';
 
 class App extends Component {
@@ -25,6 +26,9 @@ class App extends Component {
     this.setState({ searchField: e.target.value });
   };
 
+  handleSubmit = (e) => {
+    console.log('Hi');
+  };
   render() {
     if (this.state.users) {
       const { users, searchField } = this.state;
@@ -37,12 +41,30 @@ class App extends Component {
       return (
         <div className='App'>
           {console.log(this.state.users)}
-          <h1>Users Rolodex</h1>
+          <h1>RandomUser - API - State CRUD</h1>
+
+          <div className='addNew'>
+            <h3>Add new user</h3>
+            <MyForm
+              handleNewUser={(e) => {
+                // this.setState((prevState) => ({
+                //   users: [e, ...prevState.users],
+                // }));
+
+                let length = this.state.users.length;
+                const newUsers = this.state.users;
+                newUsers.push(e);
+                console.log('new array: ', newUsers);
+                this.setState({ users: newUsers });
+              }}
+            />
+          </div>
           <SearchBox
             placeholder='Search User'
             handleChange={this.handleChange}
           />
           <div className='cardList'>
+            {/* Mapping threw API results */}
             {filteredUsers.map((user, idx) => (
               <Card
                 key={idx}
@@ -65,6 +87,48 @@ class App extends Component {
       );
     }
   }
+}
+
+function MyForm({ handleNewUser }) {
+  const [first, setFirst] = useState('');
+  const [last, setLast] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let newInfo = { name: { first: first, last: last }, email: email };
+    handleNewUser(newInfo);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Enter your first name:
+        <input
+          type='text'
+          value={first}
+          onChange={(e) => setFirst(e.target.value)}
+        />
+      </label>
+      <label>
+        Enter your last name:
+        <input
+          type='text'
+          value={last}
+          onChange={(e) => setLast(e.target.value)}
+        />
+      </label>
+      <label>
+        Enter your email:
+        <input
+          type='text'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </label>
+      <input type='submit' />
+    </form>
+  );
 }
 
 export default App;
