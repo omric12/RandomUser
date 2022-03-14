@@ -16,17 +16,17 @@ const publicPath = path.join(__dirname, '../client/', 'build');
 app.use(express.static(publicPath));
 
 app.get('/users', (req, res) => {
-  axios
-    .get('https://randomuser.me/api/?results=10')
-    .then((response) => {
-      res.send(response.data.results);
-    })
-    .catch((e) => console.log('ERROR BE: ', e));
+    axios
+        .get('https://randomuser.me/api/?results=10')
+        .then((response) => {
+            res.send(response.data.results);
+        })
+        .catch((e) => console.log('ERROR BE: ', e));
 });
 app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
+    res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 app.listen(port, () => {
-  console.log(`listening on port ${port}`);
+    console.log(`listening on port ${port}`);
 });

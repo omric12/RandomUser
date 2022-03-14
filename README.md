@@ -1,8 +1,11 @@
 # Interview Assignment
 
 RandomUser application.
+
 Add, edit and delete users.
+
 Without database.
+
 Deployed on Heroku.
 
 ## Frontend

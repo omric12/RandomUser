@@ -3,16 +3,16 @@ import './popup.style.css';
 import React from 'react';
 
 const Popup = (props) => {
-  return (
-    <div className='popup-box'>
-      <div className='box'>
+    return (
+        <div className='popup-box'>
+            <div className='box'>
         <span className='close-icon' onClick={props.handleClose}>
           x
         </span>
-        {props.content}
-      </div>
-    </div>
-  );
+                {props.content}
+            </div>
+        </div>
+    );
 };
 
 export default Popup;

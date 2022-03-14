@@ -1,11 +1,11 @@
 body {
-  font-size: 92%;
-  font-family: 'Quicksand', sans-serif;
-  color: white;
-  background: #1d2433;
+    font-size: 92%;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    background: #1d2433;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }

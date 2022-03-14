@@ -1,26 +1,26 @@
 .card-container {
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(to right bottom, #045857, #1a2980);
-  border: 1px solid grey;
-  border-radius: 5px;
-  padding: 25px;
-  cursor: pointer;
-  -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  transition: transform 0.25s ease-out;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right bottom, #045857, #1a2980);
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 25px;
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
 }
 
 .card-container:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .image {
-  border-radius: 50px;
-  border: 1px solid grey;
+    border-radius: 50px;
+    border: 1px solid grey;
 }
 
 .optionBtn {
-  margin: 5px;
+    margin: 5px;
 }
