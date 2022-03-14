@@ -1,3 +1,5 @@
+const path = require('path');
+
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
@@ -9,7 +11,9 @@ app.use(cors());
  * process.env.PORT while hosted on Heroku
  * 5000 while hosted locally
  */
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
+const publicPath = path.join(__dirname, '../client/', 'build');
+app.use(express.static(publicPath));
 
 app.get('/users', (req, res) => {
   axios
@@ -19,7 +23,10 @@ app.get('/users', (req, res) => {
     })
     .catch((e) => console.log('ERROR BE: ', e));
 });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
 });
