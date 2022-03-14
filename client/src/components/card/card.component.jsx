@@ -1,51 +1,81 @@
 import './card.style.css';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Popup from '../popup/popup';
 
-function Card({ id, user, handleDelete }) {
+function Card({ id, user, handleDelete, handleUpdate }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [first, setFirst] = useState();
+  const [last, setLast] = useState();
+
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
-  return (
-    <div className='card-container'>
-      <img className='image' src={user.picture.large} alt='user' />
-      <h2>
-        {user.name.title}. {user.name.last} {user.name.first}
-      </h2>
-      <p>{user.email}</p>
-      <div>
-        <button className='optionBtn' onClick={togglePopup}>
-          Edit
-        </button>
-        <button className='optionBtn' onClick={handleDelete}>
-          Delete
-        </button>
-        <button className='optionBtn' onClick={togglePopup}>
-          Details
-        </button>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let newInfo = { ...user, name: { first: first, last: last } };
+    handleUpdate(newInfo);
+    togglePopup();
+  };
+  useEffect(() => {
+    setFirst(user.name.first);
+    setLast(user.name.last);
+  }, []);
+
+  if (user) {
+    return (
+      <div className='card-container'>
+        <img className='image' src={user.picture.large} alt='user' />
+        <h2>
+          {user.name.title}. {last} {first}
+        </h2>
+        <p>{user.email}</p>
+        <div>
+          <button className='optionBtn' onClick={togglePopup}>
+            Edit
+          </button>
+          <button className='optionBtn' onClick={handleDelete}>
+            Delete
+          </button>
+          <button className='optionBtn' onClick={togglePopup}>
+            Details
+          </button>
+        </div>
+        {isOpen && (
+          <Popup
+            content={
+              <>
+                <b>Manage account</b>
+                <form onSubmit={handleSubmit}>
+                  <label htmlFor='fname'>First name:</label>
+                  <input
+                    type='text'
+                    name='fname'
+                    value={first}
+                    onChange={(e) => {
+                      setFirst(e.target.value);
+                    }}
+                  />
+                  <label htmlFor='lname'>Last name:</label>
+                  <input
+                    type='text'
+                    name='lname'
+                    value={last}
+                    onChange={(e) => {
+                      setLast(e.target.value);
+                    }}
+                  />
+                  <input type='submit' value='Submit' />
+                </form>
+              </>
+            }
+            handleClose={togglePopup}
+          />
+        )}
       </div>
-      {isOpen && (
-        <Popup
-          content={
-            <>
-              <b>Manage account</b>
-              <form action='/action_page.php'>
-                <label for='fname'>First name:</label>
-                <input type='text' id='fname' name='fname' />
-                <label for='lname'>Last name:</label>
-                <input type='text' id='lname' name='lname' />
-                <input type='submit' value='Submit' />
-              </form>
-            </>
-          }
-          handleClose={togglePopup}
-        />
-      )}
-    </div>
-  );
+    );
+  }
 }
 
 export default Card;

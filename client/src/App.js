@@ -2,7 +2,6 @@
 import './App.css';
 
 import Card from './components/card/card.component.jsx';
-// import { CardList } from './components/card-list/card-list.component';
 import { Component } from 'react';
 import { SearchBox } from './components/searchbox/searchbox.component';
 
@@ -37,8 +36,7 @@ class App extends Component {
 
       return (
         <div className='App'>
-          {console.log(this.state)}
-
+          {console.log(this.state.users)}
           <h1>Users Rolodex</h1>
           <SearchBox
             placeholder='Search User'
@@ -50,6 +48,12 @@ class App extends Component {
                 key={idx}
                 id={idx}
                 user={user}
+                handleUpdate={(event) => {
+                  const newUsers = users.map((x, i) =>
+                    i === idx ? { ...x, event } : x
+                  );
+                  this.setState({ users: newUsers });
+                }}
                 handleDelete={() => {
                   const newUsers = users.filter((x, i) => i !== idx);
                   this.setState({ users: newUsers });
@@ -57,7 +61,6 @@ class App extends Component {
               />
             ))}
           </div>
-          {/* <CardList users={filteredUsers}></CardList> */}
         </div>
       );
     }
