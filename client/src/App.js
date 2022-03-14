@@ -1,7 +1,8 @@
 // import logo from "./logo.svg";
 import './App.css';
 
-import { CardList } from './components/card-list/card-list.component';
+import Card from './components/card/card.component.jsx';
+// import { CardList } from './components/card-list/card-list.component';
 import { Component } from 'react';
 import { SearchBox } from './components/searchbox/searchbox.component';
 
@@ -43,7 +44,20 @@ class App extends Component {
             placeholder='Search User'
             handleChange={this.handleChange}
           />
-          <CardList users={filteredUsers}></CardList>
+          <div className='cardList'>
+            {filteredUsers.map((user, idx) => (
+              <Card
+                key={idx}
+                id={idx}
+                user={user}
+                handleDelete={() => {
+                  const newUsers = users.filter((x, i) => i !== idx);
+                  this.setState({ users: newUsers });
+                }}
+              />
+            ))}
+          </div>
+          {/* <CardList users={filteredUsers}></CardList> */}
         </div>
       );
     }

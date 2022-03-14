@@ -1,9 +1,17 @@
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 h1 {
-    font-family: "Bigelow Rules";
-    font-size: 72px;
-    color: #0ccac4;
+  font-family: 'Bigelow Rules';
+  font-size: 72px;
+  color: #0ccac4;
+}
+
+.cardList {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
 }
