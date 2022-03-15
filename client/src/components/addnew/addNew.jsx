@@ -1,15 +1,15 @@
 import './addNew.style.css';
 
-import {useState} from 'react';
+import { useState } from 'react';
 
-function AddNew({handleNewUser}) {
+function AddNew({ handleNewUser }) {
     const [first, setFirst] = useState('');
     const [last, setLast] = useState('');
     const [email, setEmail] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let newInfo = {name: {first: first, last: last}, email: email};
+        let newInfo = { name: { first: first, last: last }, email: email };
         handleNewUser(newInfo);
     };
 
@@ -24,8 +24,8 @@ function AddNew({handleNewUser}) {
                     onChange={(e) => setFirst(e.target.value)}
                 />
             </label>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <label>
                 Enter your last name:{' '}
                 <input
@@ -35,8 +35,8 @@ function AddNew({handleNewUser}) {
                     onChange={(e) => setLast(e.target.value)}
                 />
             </label>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <label>
                 Enter your email:{' '}
                 <input
@@ -46,9 +46,9 @@ function AddNew({handleNewUser}) {
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </label>
-            <br/>
-            <br/>
-            <input id='submit' type='submit'/>
+            <br />
+            <br />
+            <input id='submit' type='submit' value='Submit User' />
         </form>
     );
 }
