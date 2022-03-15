@@ -8,21 +8,23 @@ function Card({ user, handleDelete, handleUpdate, onClick }) {
     const [isOpen, setIsOpen] = useState(false);
     const [first, setFirst] = useState();
     const [last, setLast] = useState();
-
+    // Toggle pop up for editing
     const togglePopup = () => {
         setIsOpen(!isOpen);
     };
+    // Submit edited information
     const handleSubmit = (e) => {
         e.preventDefault();
         let newInfo = { ...user, name: { first: first, last: last } };
         handleUpdate(newInfo);
         togglePopup();
     };
+    // React hook to update data if changed
     useEffect(() => {
         setFirst(user.name.first);
         setLast(user.name.last);
     }, []);
-
+    // Only load display after we loaded user information
     if (user) {
         return (
             <div className='card-container'>

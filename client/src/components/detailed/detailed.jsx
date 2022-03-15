@@ -1,8 +1,8 @@
-import {Box, chakra, Flex, ListItem, UnorderedList} from '@chakra-ui/react';
+import { Box, chakra, Flex, ListItem, UnorderedList } from '@chakra-ui/react';
 
 import React from 'react';
-
-const Detailed = ({currentUser}) => {
+// Built with Chakra-UI component library
+const Detailed = ({ currentUser }) => {
     return (
         <section id='about'>
             <Flex
@@ -24,7 +24,7 @@ const Detailed = ({currentUser}) => {
                         borderRadius: '32px',
                     }}></Box>
 
-                <Box w={3 / 5} p={{base: 4, md: 8}}>
+                <Box w={3 / 5} p={{ base: 4, md: 8 }}>
                     <chakra.h1 fontSize='2xl' fontWeight='bold'>
                         {currentUser.name?.title}. {currentUser.name.last}{' '}
                         {currentUser.name.first}

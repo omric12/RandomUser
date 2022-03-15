@@ -10,7 +10,7 @@ import { Text } from '@chakra-ui/react';
 class App extends Component {
   constructor() {
     super();
-
+    // Initialize application state
     this.state = {
       users: [],
       searchField: '',
@@ -18,16 +18,17 @@ class App extends Component {
       currentUser: {},
     };
   }
-
+  // Once loaded get data from API
   componentDidMount() {
     fetch('/users')
       .then((res) => res.json())
       .then((data) => this.setState({ users: data }));
   }
-
+  // Search bar handle change
   handleChange = (e) => {
     this.setState({ searchField: e.target.value });
   };
+  // Expended information view toggle
   toggleHero = (user) => {
     if (user === this.state.currentUser) {
       this.setState({ hero: !this.state.hero });
