@@ -30,10 +30,14 @@ class App extends Component {
   };
   // Expended information view toggle
   toggleHero = (user) => {
+    this.setState({ hero: true });
+
     if (user === this.state.currentUser) {
-      this.setState({ hero: !this.state.hero });
+      this.setState({ hero: false });
     }
-    this.setState({ currentUser: user });
+    else {
+      this.setState({ currentUser: user });
+    }
   };
 
   render() {
