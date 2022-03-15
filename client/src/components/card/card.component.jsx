@@ -1,10 +1,10 @@
 import './card.style.css';
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Popup from '../popup/popup';
 
-function Card({id, user, handleDelete, handleUpdate, onClick}) {
+function Card({ user, handleDelete, handleUpdate, onClick }) {
     const [isOpen, setIsOpen] = useState(false);
     const [first, setFirst] = useState();
     const [last, setLast] = useState();
@@ -14,7 +14,7 @@ function Card({id, user, handleDelete, handleUpdate, onClick}) {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        let newInfo = {...user, name: {first: first, last: last}};
+        let newInfo = { ...user, name: { first: first, last: last } };
         handleUpdate(newInfo);
         togglePopup();
     };
@@ -26,7 +26,7 @@ function Card({id, user, handleDelete, handleUpdate, onClick}) {
     if (user) {
         return (
             <div className='card-container'>
-                <img className='image' src={user.picture?.large} alt='Who Are You?'/>
+                <img className='image' src={user.picture?.large} alt='Who Are You?' />
                 <h2>
                     {user.name.title}. {last} {first}
                 </h2>
@@ -46,9 +46,9 @@ function Card({id, user, handleDelete, handleUpdate, onClick}) {
                     <Popup
                         content={
                             <>
-                                <b style={{color: 'black'}}>Manage account</b>
+                                <b style={{ color: 'black' }}>Manage account</b>
                                 <form onSubmit={handleSubmit}>
-                                    <label htmlFor='fname'>First name:</label>
+                                    <label htmlFor='fname'>First name:</label><br />
                                     <input
                                         type='text'
                                         name='fname'
@@ -56,8 +56,8 @@ function Card({id, user, handleDelete, handleUpdate, onClick}) {
                                         onChange={(e) => {
                                             setFirst(e.target.value);
                                         }}
-                                    />
-                                    <label htmlFor='lname'>Last name:</label>
+                                    /><br />
+                                    <label htmlFor='lname'>Last name:</label><br />
                                     <input
                                         type='text'
                                         name='lname'
@@ -65,8 +65,8 @@ function Card({id, user, handleDelete, handleUpdate, onClick}) {
                                         onChange={(e) => {
                                             setLast(e.target.value);
                                         }}
-                                    />
-                                    <input type='submit' value='Submit'/>
+                                    /><br />
+                                    <input type='submit' value='Submit' />
                                 </form>
                             </>
                         }

@@ -11,7 +11,7 @@ app.use(cors());
  * process.env.PORT while hosted on Heroku
  * 5000 while hosted locally
  */
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 const publicPath = path.join(__dirname, '../client/', 'build');
 app.use(express.static(publicPath));
 
