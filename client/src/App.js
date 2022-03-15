@@ -52,15 +52,16 @@ class App extends Component {
       return (
         <div className='App'>
           <Text
-            fontSize='25'
-            py='8'
+            fontSize='30'
+            py='4'
             px='4'
             w='100%'
             bgClip='text'
             bgGradient='linear(to-r,purple.400, green.800)'
             fontWeight='extrabold'>
-            RandomUser
+            RandomUser - <a href='https://github.com/omric12/RandomUser'>Visit Repo </a>
           </Text>
+
 
           <div className='addNew'>
             <h3>Add new user</h3>
